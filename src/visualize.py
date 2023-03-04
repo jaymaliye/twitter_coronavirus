@@ -28,9 +28,9 @@ if args.percent:
 # remove all items with 'country_code'
 counts[args.key] = {k:v for k,v in counts[args.key].items() if 'country_code' not in k}
 
-# print the top 10 count values
+# saving the top  10 count values
 items = sorted(counts[args.key].items(), key=lambda item: (item[1],item[0]), reverse=True)
-top_ten = sorted(items[:10], key=lambda x: x[1])
+top_ten = sorted(sorted(counts[args.key].items(), key=lambda item: (item[1],item[0]), reverse=True)[:10], key=lambda x: x[1])
 
 # creating separate lists for top_ten
 k = [] # for keys
@@ -41,6 +41,7 @@ for i,j in sorted(top_ten, key=lambda x:x[1]):
     k.append(i)
     v.append(j)
 
+# printing
 print(k)
 print(v)
 
@@ -68,5 +69,3 @@ else:
         plt.savefig('plt-2-coronavirus-lang.png')
     elif args.key == '#코로나바이러스':
         plt.savefig('plt-3-코로나바이러스-lang.png')
-
-
