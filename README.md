@@ -9,6 +9,12 @@ Of those tweets, about 1% are *geotagged*.
 That is, the user's device includes location information about where the tweets were sent from.
 In total, there are about 1.1 billion tweets in the dataset.
 
+The tweets are stored as follows. The tweets for each day are stored in a zip file geoTwitterYY-MM-DD.zip, and inside this zip file are 24 text files, one for each hour of the day. Each text file contains a single tweet per line in JSON format. JSON is a popular format for storing data that is closely related to python dictionaries.
+
+Vim is able to open compressed zip files, and I encourage you to use vim to explore the dataset.
+
+I have followed the MapReduce procedure to analyze these tweets. This is a 3 step procedure summarized in the following image:
+
 <img src=mapreduce.png width=100% />
 
 ## Results
