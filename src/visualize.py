@@ -15,7 +15,6 @@ import os
 import json
 from collections import Counter,defaultdict
 import matplotlib.pyplot as plt # importing plt
-import matplotlib.font_manager as fm
 
 # open the input path
 with open(args.input_path) as f:
@@ -46,9 +45,6 @@ for k,v in top_ten:
 print(x)
 print(y)
 
-# setting korean language to work with plt
-fprop = fm.FontProperties(fname='NotoSansCJKtc-Regular.otf')
-
 # creating plot
 plt.bar([i for i in range(len(x))],
         y,
@@ -66,7 +62,7 @@ if args.input_path == 'reduced.country':
         plt.title(args.key + " tweets across top 10 countries")
         plt.savefig('plt-1-coronavirus-country.png')
     elif args.key == '#코로나바이러스':
-        plt.title(args.key + " tweets across top 10 countries", fontproperties=fprop)
+        plt.title("#coronavirus tweets in Korean across top 10 countries")
         plt.savefig('plt-2-코로나바이러스-country.png')
 else:
     plt.xlabel("languages")
@@ -75,7 +71,7 @@ else:
         plt.title(args.key + " tweets across top 10 languages")
         plt.savefig('plt-3-coronavirus-lang.png')
     elif args.key == '#코로나바이러스':
-        plt.title(args.key + " tweets across top 10 languages", fontproperties=fprop)
+        plt.title("#coronavirus tweets in Korean across top 10 languages")
         plt.savefig('plt-4-코로나바이러스-lang.png')
 
 
