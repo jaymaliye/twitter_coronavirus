@@ -31,23 +31,25 @@ counts[args.key] = {k:v for k,v in counts[args.key].items() if 'country_code' no
 # saving the top  10 count values
 items = sorted(counts[args.key].items(), key=lambda item: (item[1],item[0]), reverse=True)
 top_ten = sorted(sorted(counts[args.key].items(), key=lambda item: (item[1],item[0]), reverse=True)[:10], key=lambda x: x[1])
+print("top = ", top_ten)
+
 
 # creating separate lists for top_ten
-k = [] # for keys
-v = [] # for number of tweets
+x = [] # for keys
+y = [] # for number of tweets
 
 # adding top ten values to these
-for i,j in sorted(top_ten, key=lambda x:x[1]):
-    k.append(i)
-    v.append(j)
+for k,v in top_ten:
+    x.append(k)
+    y.append(v)
 
 # printing
-print(k)
-print(v)
+print(x)
+print(y)
 
 # creating plot
-plt.bar(k,
-        v,
+plt.bar(x,
+        y,
         color = 'green',
         width = 0.25
         )
@@ -56,15 +58,15 @@ plt.ylabel("tweet count")
 # if input is reduced.country, set axes accordingly
 # else (if input is reduced.lang), change axes
 if args.input_path == 'reduced.country':
-    plt.title(args.key + " tweets across top 10 countries")
     plt.xlabel("country")
+    plt.title(args.key + " tweets across top 10 countries")
     if args.key == '#coronavirus':
         plt.savefig('plt-1-coronavirus-country.png')
     elif args.key == '#코로나바이러스':
         plt.savefig('plt-2-코로나바이러스-country.png')
 else:
-    plt.title(args.key + " tweets across top 10 languages")
     plt.xlabel("languages")
+    plt.title(args.key + " tweets across top 10 languages")
     if args.key == '#coronavirus':
         plt.savefig('plt-2-coronavirus-lang.png')
     elif args.key == '#코로나바이러스':
